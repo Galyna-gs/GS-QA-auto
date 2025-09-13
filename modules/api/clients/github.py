@@ -15,6 +15,11 @@ class GitHub:
     
     def get_emoji(self):
         response = requests.get('https://api.github.com/emojis')
-        status_code = response.status_code
         body = response.json()
         return body
+    
+    def get_last_commit(self, owner, reponame, branch):
+        response = requests.get(f'https://api.github.com/repos/{owner}/{reponame}/commits', params = {"sha": branch, "per_page": 1})
+        body = response.json()
+        return body
+    
