@@ -40,7 +40,7 @@ def test_emoji_not_found (github_api):
     assert 'no_emoji' not in r
 
 @pytest.mark.api
-def test_user_commit(github_api):
+def test_user_lastcommit(github_api):
     r = github_api.get_last_commit('Galyna-gs', 'GS-QA-auto', 'main')
     
     latest_commit = r[0]
