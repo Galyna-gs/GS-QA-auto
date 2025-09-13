@@ -16,7 +16,7 @@ def test_non_exist_user(github_api):
 def test_repo_can_be_found(github_api):
     r = github_api.search_repo('become-qa-auto')
     # print(r)
-    assert r['total_count'] == 57
+    assert r['total_count'] == 55
     assert 'become-qa-auto' in r['items'][0]['name']
     
 @pytest.mark.api
@@ -28,3 +28,13 @@ def test_cannot_be_fount(github_api):
 def test_one_symbol_name(github_api):
     r = github_api.search_repo('s')
     assert r['total_count'] != 0
+
+@pytest.mark.api
+def test_emoji_found (github_api):
+    r = github_api.get_emoji()
+    assert 'coffee' in r
+    
+@pytest.mark.api
+def test_emoji_not_found (github_api):
+    r = github_api.get_emoji()
+    assert 'no_emoji' not in r

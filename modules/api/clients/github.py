@@ -12,3 +12,9 @@ class GitHub:
 
         body = r.json()
         return body 
+    
+    def get_emoji(self):
+        response = requests.get('https://api.github.com/emojis')
+        status_code = response.status_code
+        body = response.json()
+        return body
