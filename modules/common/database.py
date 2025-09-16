@@ -53,3 +53,9 @@ class Database():
         self.cursor.execute(querry)
         record = self.cursor.fetchall()
         return record 
+    
+    def add_order(self, order_id, customer_id, product_id, order_date=None):
+        querry = f"INSERT OR REPLACE INTO orders (id, customer_id, product_id, order_date) \
+            VALUES ({order_id}, {customer_id}, {product_id}, '{order_date}')"
+        self.cursor.execute(querry)
+        self.connection.commit()
